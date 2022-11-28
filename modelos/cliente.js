@@ -2,10 +2,16 @@ module.exports = class Cliente {
     constructor(cliente){
         this.id = cliente?.id
         this.nome = cliente?.nome
-        this.cpf = cliente?.cpf
         this.telefone = cliente?.telefone
-        this.endereco = cliente?.endereco
-        this.valor = cliente?.valor
+        this.email = cliente?.email
+        this.cpf = cliente?.cpf
+        this.cep = cliente?.cep
+        this.logradouro = cliente?.logradouro
+        this.numero = cliente?.numero
+        this.bairro = cliente?.bairro
+        this.cidade = cliente?.cidade
+        this.estado = cliente?.estado
+        this.complemento = cliente?.complemento
     }
 
 
@@ -42,10 +48,16 @@ module.exports = class Cliente {
             const clienteDb = listaClientes[i]
             if(clienteDb.id.toString() === cliente.id.toString()){
                 clienteDb.nome = cliente.nome
-                clienteDb.cpf = cliente.cpf
-                clienteDb.endereco = cliente.endereco
                 clienteDb.telefone = cliente.telefone
-                clienteDb.valor = cliente.valor
+                clienteDb.email = cliente.email
+                clienteDb.cpf = cliente.cpf
+                clienteDb.cep = cliente.cep
+                clienteDb.logradouro = cliente.logradouro
+                clienteDb.numero = cliente.numero
+                clienteDb.bairro = cliente.bairro
+                clienteDb.cidade = cliente.cidade
+                clienteDb.estado = cliente.estado
+                clienteDb.complemento = cliente.complemento
                 exist = true
                 break
             }
