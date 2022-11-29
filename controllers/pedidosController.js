@@ -1,4 +1,5 @@
 const Pedido = require("../modelos/pedido");
+const PedidoProduto = require("../modelos/pedidoProduto")
 
 module.exports = {
     index: async (req, res, next) => {
@@ -7,7 +8,6 @@ module.exports = {
     },
     create: (req, res, next) => {
         const pedido = new Pedido(req.body)
-        pedido.id = new Date().getTime()
         Pedido.salvar(pedido)
         res.status(201).send(pedido)
     },
@@ -28,5 +28,20 @@ module.exports = {
         let pedidoDb = await Pedido.buscaPorId(req.params.id)
         if(!pedidoDb) return res.status(404).send({mensagem: "Pedido não encontrado"})
         res.status(200).send(pedidoDb)
+    },
+    last: (req, res, next) => {
+        const pedido = new Pedido.getLast()
+        res.status(201).send(pedido)
+    },
+    showProd: async (req,res,next) =>{
+        let pedidos = []
+        let pedidoProdutoDb = await PedidoProduto.lista()
+        pedidoProdutoDb.array.forEach(async item => {
+            if(item.produtoId==req.params.id){
+                lista.push(await Pedido.buscaPorId(item.pedidoId));
+            }
+        });
+        if(!pedidoProdutoDb) return res.status(404).send({mensagem: "Produto não foi comprado"})
+        res.status(200).send(pedidos)
     }
 };

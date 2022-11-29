@@ -19,7 +19,9 @@ router.put('/produtos/:id', ProdutosController.update);
 
 router.get('/pedidos', PedidosController.index);
 router.post('/pedidos', PedidosController.create);
+router.get('/pedidosLast', PedidosController.last);
 router.get('/pedidos/:id', PedidosController.show);
+router.get('/pedidos/produtos/:produto_id', PedidosController.showProd);
 router.delete('/pedidos/:id', PedidosController.delete);
 router.put('/pedidos/:id', PedidosController.update);
 
