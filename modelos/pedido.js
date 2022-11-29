@@ -79,4 +79,18 @@ module.exports = class Pedido {
         
         return pedidos
     }
+
+    static async getLast(){
+        let pedidos = []
+        const fs = require('fs');
+
+        try {
+            const jsonPedidos = await fs.readFileSync('db/pedidos.json', 'utf8');
+            pedidos = JSON.parse(jsonPedidos)
+        } catch (err) {
+            console.error(err);
+        }
+        
+        return pedidos.pop();
+    }
 }
