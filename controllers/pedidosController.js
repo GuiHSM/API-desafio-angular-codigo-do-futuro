@@ -36,12 +36,13 @@ module.exports = {
     showProd: async (req,res,next) =>{
         let pedidos = []
         let pedidoProdutoDb = await PedidoProduto.lista()
-        pedidoProdutoDb.array.forEach(async item => {
-            if(item.produtoId==req.params.id){
-                lista.push(await Pedido.buscaPorId(item.pedidoId));
+        for (let index = 0; index < pedidoProdutoDb.length; index++) {
+            const item = pedidoProdutoDb[index];
+            if(item.produto_id.toString()===req.params.produto_id){
+                pedidos.push(await Pedido.buscaPorId(item.pedido_id));
             }
-        });
-        if(!pedidoProdutoDb) return res.status(404).send({mensagem: "Produto não foi comprado"})
+        }
+        if(!pedidoProdutoDb) return res.status(404).send({mensagem: "Produto ainda não foi comprado"})
         res.status(200).send(pedidos)
     }
 };
