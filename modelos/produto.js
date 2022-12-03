@@ -6,6 +6,7 @@ module.exports = class Produto {
         this.descricao = produto?.descricao
         this.valor = produto?.valor
         this.qtd_estoque = produto?.qtd_estoque
+        this.custo = produto?.custo
     }
 
 
@@ -47,6 +48,7 @@ module.exports = class Produto {
                 produtoDb.descricao = produto.descricao
                 produtoDb.valor = produto.valor
                 produtoDb.qtd_estoque = produto.qtd_estoque
+                produtoDb.custo = produto.custo
 
                 exist = true
                 break
