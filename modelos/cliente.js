@@ -100,8 +100,8 @@ module.exports = class Cliente {
         const fs = require('fs');
 
         try {
-            const jsonPedidos = await fs.readFileSync('db/clientes.json', 'utf8');
-            clientes = JSON.parse(jsonPedidos)
+            const jsonClientes = await fs.readFileSync('db/clientes.json', 'utf8');
+            clientes = JSON.parse(jsonClientes)
         } catch (err) {
             console.error(err);
         }

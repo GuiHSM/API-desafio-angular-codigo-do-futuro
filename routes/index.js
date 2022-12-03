@@ -3,6 +3,7 @@ const router = express.Router();
 const ClientesController = require("../controllers/clientesController")
 const ProdutosController = require("../controllers/produtosController")
 const PedidosController = require("../controllers/pedidosController")
+const CategoriasController = require("../controllers/categoriasController")
 const PedidosProdutosController = require("../controllers/pedidosProdutosController")
 
 router.get('/clientes', ClientesController.index);
@@ -30,5 +31,12 @@ router.post('/pedidosProdutos', PedidosProdutosController.create);
 router.get('/pedidosProdutos/:id', PedidosProdutosController.show);
 router.delete('/pedidosProdutos/:id', PedidosProdutosController.delete);
 router.put('/pedidosProdutos/:id', PedidosProdutosController.update);
+
+router.get('/categorias', CategoriasController.index);
+router.post('/categorias', CategoriasController.create);
+router.get('/categorias/:id', CategoriasController.show);
+router.delete('/categorias/:id', CategoriasController.delete);
+router.put('/categorias/:id', CategoriasController.update);
+router.get('/categorias/produtos/:id', ProdutosController.indexByCategoria);
 
 module.exports = router;
