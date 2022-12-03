@@ -35,6 +35,7 @@ module.exports = class PedidoProduto {
     }
 
     static async salvar(pedidoProduto){
+        console.log(pedidoProduto.id)
         const listaPedidosProdutos = await this.lista()
         let exist = false
         for(let i=0; i<listaPedidosProdutos.length; i++){

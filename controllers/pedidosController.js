@@ -29,8 +29,8 @@ module.exports = {
         if(!pedidoDb) return res.status(404).send({mensagem: "Pedido não encontrado"})
         res.status(200).send(pedidoDb)
     },
-    last: (req, res, next) => {
-        const pedido = new Pedido.getLast()
+    last: async (req, res, next) => {
+        const pedido = await Pedido.getLast()
         res.status(201).send(pedido)
     },
     showProd: async (req,res,next) =>{

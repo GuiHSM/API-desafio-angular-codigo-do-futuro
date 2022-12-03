@@ -5,9 +5,9 @@ module.exports = {
         const produtos = await Produto.lista()
         res.status(200).send( produtos )
     },
-    create: (req, res, next) => {
+    create: async (req, res, next) => {
         const produto = new Produto(req.body)
-        produto.id = new Date().getTime()
+        produto.id = new Number(Number((await Produto.getLast()).id)+1)
         Produto.salvar(produto)
         res.status(201).send(produto)
     },

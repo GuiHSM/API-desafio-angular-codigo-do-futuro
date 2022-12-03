@@ -5,15 +5,16 @@ module.exports = {
         const clientes = await Cliente.lista()
         res.status(200).send( clientes )
     },
-    create: (req, res, next) => {
+    create: async (req, res, next) => {
         const cliente = new Cliente(req.body)
-        cliente.id = new Date().getTime()
+        cliente.id = new Number(Number((await Cliente.getLast()).id)+1)
+        console.log(Number((await Cliente.getLast()).id)+1)
         Cliente.salvar(cliente)
         res.status(201).send(cliente)
     },
     delete: (req, res, next) => {
-        Cliente.apagarPorId(req.params.id)
-        res.status(204).send("")
+        Cliente.apagarPorId(req.params.id);
+        res.status(204).send("");
     },
     update: async (req, res, next) => {
         let clienteDb = await Cliente.buscaPorId(req.params.id)

@@ -58,6 +58,7 @@ module.exports = class Cliente {
                 clienteDb.cidade = cliente.cidade
                 clienteDb.estado = cliente.estado
                 clienteDb.complemento = cliente.complemento
+                clienteDb.admin=cliente.admin
                 exist = true
                 break
             }
@@ -93,5 +94,18 @@ module.exports = class Cliente {
         }
         
         return clientes
+    }
+    static async getLast(){
+        let clientes = []
+        const fs = require('fs');
+
+        try {
+            const jsonPedidos = await fs.readFileSync('db/clientes.json', 'utf8');
+            clientes = JSON.parse(jsonPedidos)
+        } catch (err) {
+            console.error(err);
+        }
+        
+        return clientes.pop();
     }
 }

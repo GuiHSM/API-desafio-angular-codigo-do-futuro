@@ -7,7 +7,6 @@ module.exports = {
     },
     create: (req, res, next) => {
         const pedidoProduto = new PedidoProduto(req.body)
-        pedidoProduto.id = new Date().getTime()
         PedidoProduto.salvar(pedidoProduto)
         res.status(201).send(pedidoProduto)
     },
