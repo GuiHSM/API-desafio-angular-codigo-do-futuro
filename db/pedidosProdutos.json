@@ -1,3 +1,1 @@
-[{"id":101,"pedido_id":1,"produto_id":1,"valor":10,"quantidade":2},
-{"id":201,"pedido_id":2,"produto_id":1,"valor":10,"quantidade":2},
-{"id":202,"pedido_id":2,"produto_id":2,"valor":10,"quantidade":2}]
+[{"id":101,"pedido_id":1,"produto_id":1,"valor":10,"quantidade":2},{"id":201,"pedido_id":2,"produto_id":1,"valor":10,"quantidade":2},{"id":202,"pedido_id":2,"produto_id":2,"valor":10,"quantidade":2},{"id":1001,"produto_id":1,"pedido_id":10,"valor":-12,"quantidade":"50"}]

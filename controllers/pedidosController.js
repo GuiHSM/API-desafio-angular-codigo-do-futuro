@@ -6,8 +6,9 @@ module.exports = {
         const pedidos = await Pedido.lista()
         res.status(200).send( pedidos )
     },
-    create: (req, res, next) => {
+    create: async (req, res, next) => {
         const pedido = new Pedido(req.body)
+        pedido.id = new Number(Number((await Pedido.getLast()).id)+1)
         Pedido.salvar(pedido)
         res.status(201).send(pedido)
     },
