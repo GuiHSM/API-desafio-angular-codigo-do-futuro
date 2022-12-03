@@ -1,6 +1,7 @@
 module.exports = class Produto {
     constructor(produto){
         this.id = produto?.id
+        this.categoria_id=produto?.categoria_id
         this.nome = produto?.nome
         this.descricao = produto?.descricao
         this.valor = produto?.valor
@@ -41,6 +42,7 @@ module.exports = class Produto {
             const produtoDb = listaProdutos[i]
             if(produtoDb.id.toString() === produto.id.toString()){
                 produtoDb.nome = produto.nome
+                produtoDb.categoria_id=produto.categoria_id
                 produtoDb.telefone = produto.telefone
                 produtoDb.descricao = produto.descricao
                 produtoDb.valor = produto.valor
@@ -81,5 +83,34 @@ module.exports = class Produto {
         }
         
         return produtos
+    }
+
+    static async listaPorCategoria(id){
+        let produtos = []
+        const fs = require('fs');
+
+        try {
+            const jsonProdutos = await fs.readFileSync('db/produtos.json', 'utf8');
+            produtos = JSON.parse(jsonProdutos)
+        } catch (err) {
+            console.error(err);
+        }
+        
+        return produtos.filter(produto=>{
+            return produto.categoria_id.toString()===id.toString();
+        })
+    }
+    static async getLast(){
+        let produtos = []
+        const fs = require('fs');
+
+        try {
+            const jsonProdutos = await fs.readFileSync('db/produtos.json', 'utf8');
+            produtos = JSON.parse(jsonProdutos)
+        } catch (err) {
+            console.error(err);
+        }
+        
+        return produtos.pop();
     }
 }

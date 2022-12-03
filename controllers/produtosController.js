@@ -28,5 +28,9 @@ module.exports = {
         let produtoDb = await Produto.buscaPorId(req.params.id)
         if(!produtoDb) return res.status(404).send({mensagem: "Produto não encontrado"})
         res.status(200).send(produtoDb)
+    },
+    indexByCategoria: async (req, res, next) =>{
+        const produtos = await Produto.listaPorCategoria(req.params.id)
+        res.status(200).send( produtos )
     }
 };
