@@ -9,6 +9,7 @@ module.exports = {
     create: async (req, res, next) => {
         const pedido = new Pedido(req.body)
         pedido.id = new Number(Number((await Pedido.getLast()).id)+1)
+        pedido.data=new Date(Date.now());
         Pedido.salvar(pedido)
         res.status(201).send(pedido)
     },
